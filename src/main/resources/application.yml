@@ -1,7 +1,7 @@
 swagger:
   app: 'Event Booking 2.0'
   description: 'A simple event booking built with Spring Boot'
-  developer: 'Emina Dedić'
+  developer: 'Emina Dedic'
   email: 'emina.dedic@stu.ibu.edu.ba'
 
 mailsender:
@@ -10,12 +10,19 @@ mailsender:
 spring:
   data:
     mongodb:
-      host: localhost
-      port: 27017  # Update the MongoDB port to 27017 (default MongoDB port)
-      database: librarydb
-
+      uri: mongodb+srv://eventbooking:Shqhoqshqhoq811@cluster0.gy45oop.mongodb.net/?retryWrites=true&w=majority
+      database: eventbookingdb
+email:
   mailgun:
     domain: 'https://app.mailgun.com/app/sending/domains/sandbox49404f0a816543f3886cf3766fed3cee.mailgun.org'
     from-email: 'Event Booking System <mailgun@sandbox49404f0a816543f3886cf3766fed3cee.mailgun.org>'
     username: 'api'
     password: '558b23476958d4d149e86c6616786f20-3750a53b-bf41751a'
+
+security:
+  jwt:
+    secret: '8Zz5tw0Ionm3XPZZfN0NOml3z9FMfmpgXwovR9fp6ryDIoGRM8EPHAB6iHsc0fb'
+
+management:
+  security:
+    enabled: false

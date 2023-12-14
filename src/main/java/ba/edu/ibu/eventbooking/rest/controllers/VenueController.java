@@ -1,11 +1,12 @@
 package ba.edu.ibu.eventbooking.rest.controllers;
 
-import ba.edu.ibu.eventbooking.model.enums.VenueType;
+import ba.edu.ibu.eventbooking.core.model.enums.VenueType;
 import ba.edu.ibu.eventbooking.rest.dto.VenueDTO;
 import ba.edu.ibu.eventbooking.rest.dto.VenueRequestDTO;
-import ba.edu.ibu.eventbooking.service.VenueService;
+import ba.edu.ibu.eventbooking.core.service.VenueService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,6 +27,7 @@ public class VenueController {
     }
 
     @PostMapping("/createVenue")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'VENUE_MANAGERS')")
     public ResponseEntity<VenueDTO> createVenue(@RequestBody VenueRequestDTO venue) {
         return ResponseEntity.ok(venueService.createVenue(venue));
     }
@@ -36,11 +38,13 @@ public class VenueController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'VENUE_MANAGERS')")
     public ResponseEntity<VenueDTO> updateVenue(@PathVariable int id, @RequestBody VenueRequestDTO venue) {
         return ResponseEntity.ok(venueService.updateVenue(id, venue));
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'VENUE_MANAGERS')")
     public ResponseEntity<Void> deleteVenue(@PathVariable int id) {
         venueService.deleteVenue(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

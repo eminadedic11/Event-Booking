@@ -1,17 +1,21 @@
 package ba.edu.ibu.eventbooking.rest.controllers;
 
-import ba.edu.ibu.eventbooking.model.Event;
+import ba.edu.ibu.eventbooking.core.model.Event;
 import ba.edu.ibu.eventbooking.rest.dto.EventDTO;
 import ba.edu.ibu.eventbooking.rest.dto.EventRequestDTO;
-import ba.edu.ibu.eventbooking.service.EventService;
+import ba.edu.ibu.eventbooking.core.service.EventService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+
 
 import java.util.List;
 
 @RestController
 @RequestMapping("api/events")
+@SecurityRequirement(name = "JWT Security")
 public class EventController {
     private final EventService eventService;
 
@@ -24,6 +28,7 @@ public class EventController {
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "/createEvent")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'EVENT_ORGANIZER')")
     public ResponseEntity<EventDTO> register(@RequestBody EventRequestDTO event) {
         return ResponseEntity.ok(eventService.createEvent(event));
     }
@@ -32,12 +37,14 @@ public class EventController {
         return ResponseEntity.ok(eventService.getEventById(id));
     }
     @RequestMapping(method = RequestMethod.PUT, path = "/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'EVENT_ORGANIZER')")
     public ResponseEntity<EventDTO> updateEvent(@PathVariable int id, @RequestBody EventRequestDTO event) {
         return ResponseEntity.ok(eventService.updateEvent(id, event));
     }
 
     @RequestMapping(method = RequestMethod.DELETE, path = "/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable int id) {
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'EVENT_ORGANIZER')")
+    public ResponseEntity<Void> deleteEvent(@PathVariable int id) {
         eventService.deleteEvent(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
