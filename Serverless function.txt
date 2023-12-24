@@ -1,6 +1,0 @@
-
-For the serverless function, I created a function that returns upcoming events following the Supplier<O>: Returns output (GET). When I run the code and open the local host everything works ok. I followed all the steps to get the aws jar file and there were no problems. I followed the further steps on how to create a function url. However, the error 502 Bad Gateway appeared in the postman. Then, using the API Gateway, I tried to solve that problem, but when I get the Invoke URL there and enter it in Postman, I get an error 404 Not found. I tried several times to test in postman using only Lambda and using API Gateway, but every time I get the same errors and I really didn't know what to do next. I will leave both links below
-
-https://5qeesjyschvgyunap7vfhn2bza0djyqk.lambda-url.eu-north-1.on.aws/
-
-https://hb044cy5y1.execute-api.eu-north-1.amazonaws.com/test/
