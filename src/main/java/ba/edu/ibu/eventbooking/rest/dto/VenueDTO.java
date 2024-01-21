@@ -1,7 +1,7 @@
 package ba.edu.ibu.eventbooking.rest.dto;
 
-import ba.edu.ibu.eventbooking.model.Venue;
-import ba.edu.ibu.eventbooking.model.enums.VenueType;
+import ba.edu.ibu.eventbooking.core.model.Venue;
+import ba.edu.ibu.eventbooking.core.model.enums.VenueType;
 
 public class VenueDTO {
     private int venueId;
@@ -20,6 +20,9 @@ public class VenueDTO {
         this.contactEmail = venue.getContactEmail();
         this.contactPhone = venue.getContactPhone();
         this.venueType = venue.getVenueType();
+    }
+
+    public VenueDTO(int i, String s, String s1, int i1, String mail, String number, VenueType venueType) {
     }
 
 

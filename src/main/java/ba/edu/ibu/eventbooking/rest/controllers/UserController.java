@@ -2,19 +2,23 @@ package ba.edu.ibu.eventbooking.rest.controllers;
 
 import ba.edu.ibu.eventbooking.rest.dto.UserDTO;
 import ba.edu.ibu.eventbooking.rest.dto.UserRequestDTO;
-import ba.edu.ibu.eventbooking.service.UserService;
+import ba.edu.ibu.eventbooking.core.service.UserService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("api/users")
+@SecurityRequirement(name = "JWT Security")
 public class UserController {
 
     private final UserService userService;
-
+@Autowired
     public UserController(UserService userService) {
         this.userService = userService;
     }
@@ -41,6 +45,7 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE, path = "/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<Void> deleteUser(@PathVariable String id) {
         userService.deleteUser(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

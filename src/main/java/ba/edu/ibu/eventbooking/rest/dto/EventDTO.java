@@ -1,7 +1,7 @@
 package ba.edu.ibu.eventbooking.rest.dto;
 
-import ba.edu.ibu.eventbooking.model.Event;
-import ba.edu.ibu.eventbooking.model.enums.EventType;
+import ba.edu.ibu.eventbooking.core.model.Event;
+import ba.edu.ibu.eventbooking.core.model.enums.EventType;
 
 import java.util.Date;
 
@@ -68,5 +68,6 @@ public class EventDTO {
     public void setEventType(EventType eventType) {
         this.eventType = eventType;
     }
+
 }
 

@@ -1,7 +1,7 @@
 package ba.edu.ibu.eventbooking.rest.dto;
 
-import ba.edu.ibu.eventbooking.model.Ticket;
-import ba.edu.ibu.eventbooking.model.enums.TicketStatus;
+import ba.edu.ibu.eventbooking.core.model.Ticket;
+import ba.edu.ibu.eventbooking.core.model.enums.TicketStatus;
 
 public class TicketRequestDTO {
     private String description;

@@ -2,8 +2,8 @@ package ba.edu.ibu.eventbooking.rest.dto;
 
 
 
-import ba.edu.ibu.eventbooking.model.User;
-import ba.edu.ibu.eventbooking.model.enums.UserType;
+import ba.edu.ibu.eventbooking.core.model.User;
+import ba.edu.ibu.eventbooking.core.model.enums.UserType;
 
 import java.util.Date;
 public class UserRequestDTO {

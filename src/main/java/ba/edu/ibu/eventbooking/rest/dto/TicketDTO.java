@@ -1,23 +1,24 @@
 package ba.edu.ibu.eventbooking.rest.dto;
 
-import ba.edu.ibu.eventbooking.model.Ticket;
+import ba.edu.ibu.eventbooking.core.model.Ticket;
+import ba.edu.ibu.eventbooking.core.model.enums.TicketStatus;
 
 public class TicketDTO {
     private int ticketId;
     private String description;
-    private String status;
+    private TicketStatus status;
     private int eventId;
     private int userId;
 
-
-    public TicketDTO(Ticket ticket) {
-        this.ticketId = ticketId;
-        this.description = description;
-        this.status = status;
-        this.eventId = eventId;
-        this.userId = userId;
+    public TicketDTO() {
     }
-
+    public TicketDTO(Ticket ticket) {
+        this.ticketId = ticket.getTicketId();
+        this.description = ticket.getDescription();
+        this.status = ticket.getStatus();
+        this.eventId = ticket.getEventId();
+        this.userId = ticket.getUserId();
+    }
 
     public int getTicketId() {
         return ticketId;
@@ -35,11 +36,11 @@ public class TicketDTO {
         this.description = description;
     }
 
-    public String getStatus() {
+    public TicketStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(TicketStatus status) {
         this.status = status;
     }
 

@@ -1,7 +1,7 @@
 package ba.edu.ibu.eventbooking.rest.dto;
 
-import ba.edu.ibu.eventbooking.model.Venue;
-import ba.edu.ibu.eventbooking.model.enums.VenueType;
+import ba.edu.ibu.eventbooking.core.model.Venue;
+import ba.edu.ibu.eventbooking.core.model.enums.VenueType;
 
 public class VenueRequestDTO {
     private String name;
