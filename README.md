@@ -1,2 +1,2 @@
 # Event-Booking
-Simple Event Booking System
+Simple RESTful Event Booking System using Java and Sprig Boot
